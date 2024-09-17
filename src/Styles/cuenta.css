@@ -1,3 +1,14 @@
+.nav {
+    background-color: #23272F;
+  }
+  
+  .titulo {
+      color: #fff;
+      font-size: 2rem;
+      font-weight: 700;
+      text-align: center;
+  }
+
 .formularioCedula {
     display: flex;
     align-items: center;
@@ -7,3 +18,8 @@
     gap: 10px
 }
 
+.volver {
+    position: absolute;
+    bottom: 10vh;
+    left: 5vh;
+}
