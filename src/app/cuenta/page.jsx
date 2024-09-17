@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { InputWithLabel } from "@/components/Input";
-import "@/styles/cuenta.css";
+import "@/Styles/cuenta.css";
 import { useRouter } from "next/navigation";
 import { InputWithLabelDisabled } from "@/components/InputDisabled";
 import Link from "next/link";

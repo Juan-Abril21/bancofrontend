@@ -5,8 +5,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Alerta from "@/components/Alerta.jsx";
-import { InputWithLabel } from "@/components/Input";
-import { Input } from "postcss";
+import { InputWithLabel } from "@/components/Input.jsx";
 
 export default function CrearCliente() {
   const [nombre, setNombre] = useState("");
