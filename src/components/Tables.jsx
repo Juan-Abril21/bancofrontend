@@ -5,15 +5,15 @@ import {
   TableBody,
   TableCaption,
   TableCell,
-  TableFooter,
   TableHead,
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
 import "@/Styles/tables.css";
+import Link from "next/link";
+import AlertaW2Buttons from "@/components/AlertaW2Buttons.jsx";
 
-// Datos de prueba (puedes reemplazar con datos reales)
 const invoices = [
   {
     ID: "1",
@@ -67,9 +67,7 @@ const invoices = [
 ];
 
 export function Tables() {
-  const [searchCedula, setSearchCedula] = useState(""); // Estado para la cédula de búsqueda
-
-  // Filtrar las facturas según la cédula buscada
+  const [searchCedula, setSearchCedula] = useState(""); 
   const filteredInvoices = invoices.filter((invoice) =>
     invoice.cedula.includes(searchCedula)
   );
@@ -108,8 +106,18 @@ export function Tables() {
                 <TableCell>{invoice.saldo}</TableCell>
                 <TableCell>{invoice.fechaCreacion}</TableCell>
                 <TableCell className="text-right">
-                  <Button variant="destructive">Eliminar</Button>
-                  <Button className="deposito">Deposito</Button>
+                  <AlertaW2Buttons
+                    Descripcion={`ID de la cuenta: ${invoice.ID}`} 
+                    TextoBoton={"Eliminar"} 
+                    Dialogo={`¿Está seguro que quiere eliminar la cuenta?`}
+                    path1={"/"} 
+                    alertButton1={"Eliminar"}
+                    path2={"/"}
+                    alertButton2={"Volver"}
+                  />
+                  <Button>
+                    <Link href="/depositar">Depositar</Link>
+                  </Button>
                 </TableCell>
               </TableRow>
             ))

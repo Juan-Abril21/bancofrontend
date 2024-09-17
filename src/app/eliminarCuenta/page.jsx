@@ -2,8 +2,10 @@
 import { Tables } from "@/components/Tables.jsx";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import "@/Styles/cuentas.css";
 import { useState } from "react";
+import "@/Styles/App.css"
+import { InputWithLabel } from "@/components/Input";
+import Alerta from "@/components/Alerta.jsx";
 
 
 export default function Cuentas() {
@@ -16,7 +18,7 @@ export default function Cuentas() {
     <main>
       <>
       <section className="nav">
-        <h1 className="titulo">Cuentas</h1>
+        <h1 className="titulo">Eliminar cuenta</h1>
       </section>
         <Tables />
         <div className="boton">

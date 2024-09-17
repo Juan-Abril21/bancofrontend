@@ -14,7 +14,7 @@ export default function Cuenta() {
   const router = useRouter();
 
   const verificarCedula = () => {
-    const cedulaExiste = false;
+    const cedulaExiste = true;
     if (cedulaExiste) {
       setInputsVisibles(true);
     } else {
@@ -29,7 +29,7 @@ export default function Cuenta() {
         <h1 className="titulo">Crear cuenta</h1>
       </section>
       <div className="formularioCedula">
-        <InputWithLabel nombre={"Cédula"} type={"number"} />
+        <InputWithLabel nombre={"Cédula"} type={"number"} nombreLabel={"Cedula"}/>
         <Button onClick={verificarCedula}>Verificar</Button>
         {inputsVisibles && (
           <>
