@@ -1,0 +1,16 @@
+.inputFormulario {
+    border: 1px solid black
+}
+
+.formulario {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+    gap: 10px
+}
+
+.AlertDialogContent {
+    background-color: white;
+}
