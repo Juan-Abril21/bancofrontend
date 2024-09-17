@@ -1,13 +1,24 @@
-
+"use client";
 import "@/Styles/crearCliente.css";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Alerta from "@/components/Alerta.jsx";
 import { Input } from "@/components/ui/Input.jsx"
 import { InputWithLabel } from "@/components/Input";
+import { useEffect, useState } from "react";
+import { postCliente } from "../peticiones/crearCliente";
 
 
-export default function crearCliente() {
+export default function CrearCliente() {
+  const [clientes, setClientes] = useState({
+    nombre: "Jose",
+    cedula: 1110000000,
+  });
+  console.log(clientes);
+  useEffect(() => {
+    postCliente(clientes);
+  }, [clientes]);
+
   return (
     <main>
       <>
