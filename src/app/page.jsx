@@ -19,9 +19,7 @@ export default function App() {
         <Button asChild>
           <Link href="/cuentas">Consulta de cuentas</Link>
         </Button>
-        <Button asChild>
-          <Link href="/deposito">Realizar deposito</Link>
-        </Button>
+      
       </div>
       </>
   );

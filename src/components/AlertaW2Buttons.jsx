@@ -13,7 +13,7 @@ import {
   import Link from "next/link";
   import '../Styles/crearCliente.css'
 
-const alterta = ({TextoBoton, Dialogo, path, Descripcion, alertButton}) => {
+const alterta = ({TextoBoton, Dialogo, path1, Descripcion, alertButton1, path2, alertButton2}) => {
     return (
         <AlertDialog>
       <AlertDialogTrigger asChild>
@@ -27,7 +27,8 @@ const alterta = ({TextoBoton, Dialogo, path, Descripcion, alertButton}) => {
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-        <AlertDialogAction><Link href={path}>{alertButton}</Link></AlertDialogAction>
+        <AlertDialogAction><Link href={path1}>{alertButton1}</Link></AlertDialogAction>
+          <AlertDialogAction><Link href={path2}>{alertButton2}</Link></AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>

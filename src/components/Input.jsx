@@ -1,10 +1,10 @@
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 
-export function InputWithLabel({type, nombre}) {
+export function InputWithLabel({type, nombre, nombreLabel}) {
   return (
     <div className="grid w-full max-w-sm items-center gap-1.5">
-      <Label>{nombre}</Label>
+      <Label>{nombreLabel}</Label>
       <Input type={type} id={type} placeholder={nombre}/>
     </div>
   )
