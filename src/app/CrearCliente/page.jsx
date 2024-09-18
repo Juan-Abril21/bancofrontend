@@ -1,15 +1,11 @@
 "use client";
-
 import "@/Styles/crearCliente.css";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Alerta from "@/components/Alerta.jsx";
-import { InputWithLabel } from "@/components/Input";
-import { useEffect } from "react";
+import { InputWithLabel } from "@/components/Input.jsx";
 import { postCliente } from "../peticiones/crearCliente";
-
-import { Input } from "postcss";
 
 export default function CrearCliente() {
   const [nombre, setNombre] = useState("");

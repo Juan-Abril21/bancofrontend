@@ -1,14 +1,14 @@
 "use client";
 import { useSearchParams } from 'next/navigation';
-import { useState, useEffect } from "react";
+import { useState, Suspense } from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import "@/Styles/App.css"
+import "@/Styles/App.css";
 import { InputWithLabel } from "@/components/Input";
 import Alerta from "@/components/Alerta.jsx";
 import { Deposito } from "../peticiones/hacerDeposito";
 
-export default function Depositar() {
+function DepositarContent() {
   const searchParams = useSearchParams();
   const id = searchParams.get('id');
   const [monto, setMonto] = useState('');
@@ -45,7 +45,18 @@ export default function Depositar() {
           alertButton="Aceptar"
           click={handleDeposito}
         />
+        <Button className="volver">
+          <Link href="/">Volver</Link>
+        </Button>
       </div>
     </main>
+  );
+}
+
+export default function Depositar() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <DepositarContent />
+    </Suspense>
   );
 }
