@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { InputWithLabel } from "@/components/Input";
 import "@/Styles/cuenta.css";
@@ -8,28 +8,38 @@ import { useRouter } from "next/navigation";
 import { InputWithLabelDisabled } from "@/components/InputDisabled";
 import Link from "next/link";
 import { InputWithButton } from "@/components/InputWithButton";
+import { postCuenta } from "../peticiones/crearCuenta";
+import { getCliente } from "../peticiones/getCliente";
 
 export default function Cuenta() {
   const [cedula, setCedula] = useState("");
   const [nombre, setNombre] = useState("");
+  const [id, setId] = useState("");
   const [inputsVisibles, setInputsVisibles] = useState(false);
   const router = useRouter();
   const [cuentaCreada, setCuentaCreada] = useState(null);
 
-  const handleCrear = () => {
+  const handleCrear = async () => {
     const cuenta = {
       nombre: nombre,
       cedula: cedula,
     };
     setCuentaCreada(cuenta);
+    await postCuenta(cedula); // Changed to pass only cedula
   };
 
-  const verificarCedula = () => {
-    const cedulaExiste = true;
-    if (cedulaExiste) {
-      setInputsVisibles(true);
-    } else {
-      router.push("/crearCliente");
+  const verificarCedula = async () => {
+    try {
+      const cliente = await getCliente(cedula);
+      if (cliente) {
+        setNombre(cliente.nombre);
+        setInputsVisibles(true);
+      } else {
+        router.push("/crearCliente");
+      }
+    } catch (error) {
+      console.error("Error al verificar cédula:", error);
+      // Handle error (e.g., show error message to user)
     }
   };
 

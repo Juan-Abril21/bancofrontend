@@ -11,7 +11,7 @@ export default function App() {
       </section>
       <div className="botones">
         <Button asChild>
-          <Link href="/crearCliente">Crear cliente</Link>
+          <Link href="/CrearCliente">Crear cliente</Link>
         </Button>
         <Button asChild>
           <Link href="/cuenta">Crear cuenta</Link>
