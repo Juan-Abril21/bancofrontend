@@ -28,7 +28,7 @@ export default function CrearCliente() {
       window.location.href = "/"; // Redirige una vez completado el registro
     } catch (error) {
       console.error("Error al registrar cliente:", error);
-      setIsLoading(false); // Deja de mostrar el botón de carga si hay un error
+      setIsLoading(false); 
     }
   };
 
@@ -58,8 +58,8 @@ export default function CrearCliente() {
           Dialogo={"Cliente creado con éxito"}
           Descripcion={"El cliente ha sido registrado correctamente."}
           alertButton={isLoading ? <ButtonLoading /> : "Aceptar"}
-          click={handleRegistrar} // La función se ejecuta cuando se presiona "Aceptar"
-          path={"/"} // Redirige una vez que se hace clic en "Aceptar"
+          click={handleRegistrar} 
+          path={"/"} 
         />
 
         <Button asChild className="volver">
