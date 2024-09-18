@@ -19,7 +19,8 @@ export default function App() {
         <Button asChild>
           <Link href="/cuentas">Consulta de cuentas</Link>
         </Button>
-      
+        <p>Profe, toca esperar a que el servidor que aloja el back inicie para poder recibir peticiones. Esto porque usamos la capa gratis de Render.</p>
+
       </div>
       </>
   );
