@@ -11,14 +11,17 @@ import {
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
 import "@/Styles/tables.css";
-import Link from "next/link";
+import { useRouter } from "next/navigation"; 
 import AlertaW2Buttons from "@/components/AlertaW2Buttons.jsx";
 import { getClientes } from "@/app/peticiones/getClientes";
 import { eliminarCuenta } from "@/app/peticiones/eliminarCuenta";
+import { ButtonLoading } from "@/components/ButtonLoading"; 
 
 export function Tables() {
   const [searchCedula, setSearchCedula] = useState("");
   const [clientes, setClientes] = useState([]);
+  const [loadingDepositId, setLoadingDepositId] = useState(null); 
+  const router = useRouter(); 
 
   useEffect(() => {
     const fetchClientes = async () => {
@@ -31,9 +34,16 @@ export function Tables() {
   const filteredInvoices = clientes.filter((invoice) =>
     invoice.cedula.includes(searchCedula)
   );
-  const handleEliminarCuenta= async (id) => {
+
+  const handleEliminarCuenta = async (id) => {
     await eliminarCuenta(id);
-  }
+    router.push("/");
+  };
+
+  const handleDepositar = async (id) => {
+    setLoadingDepositId(id); 
+    router.push(`/depositar?id=${id}`);
+  };
 
   return (
     <div>
@@ -71,18 +81,25 @@ export function Tables() {
               <TableCell>{invoice.fechaCreacion}</TableCell>
               <TableCell className="text-right">
                 <AlertaW2Buttons
-                  Descripcion={`ID de la cuenta: ${invoice.ID}`} 
-                  click={()=>handleEliminarCuenta(invoice.cuentaId)}
-                  TextoBoton={"Eliminar"} 
+                  Descripcion={`ID de la cuenta: ${invoice.ID}`}
+                  click={() => handleEliminarCuenta(invoice.cuentaId)}
+                  TextoBoton={"Eliminar"}
                   Dialogo={`¿Está seguro que quiere eliminar la cuenta?`}
-                  path1={"/"} 
+                  path1={"/"}
                   alertButton1={"Eliminar"}
-                  path2={"/cuentas"}  
+                  path2={"/cuentas"}
                   alertButton2={"Volver"}
                 />
-                <Button>
-                  <Link href={`/depositar?id=${invoice.cuentaId}`}>Depositar</Link>
-                </Button>
+                {loadingDepositId === invoice.cuentaId ? (
+                  <ButtonLoading className="depositar" />
+                ) : (
+                  <Button
+                    className="depositar"
+                    onClick={() => handleDepositar(invoice.cuentaId)}
+                  >
+                    Depositar
+                  </Button>
+                )}
               </TableCell>
             </TableRow>
           ))}
