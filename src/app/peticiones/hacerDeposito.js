@@ -1,7 +1,7 @@
 export const Deposito = async (data) => {
     const url = `https://banco-backend-8der.onrender.com/depositar`;
     const resp = await fetch(url, {
-      method: 'POST',
+      method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data)  
     });
