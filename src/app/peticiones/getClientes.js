@@ -1,5 +1,5 @@
 export const getClientes = async() => {
-    const url=`http://localhost:8080/clientes`;
+    const url=`https://banco-backend-8der.onrender.com/clientes`;
     const resp = await fetch(url);
     const data = await resp.json();
     const clientesLista = data.flatMap((cliente) =>

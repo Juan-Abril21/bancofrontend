@@ -1,10 +1,11 @@
-export const getCliente = async() => {
-    const url=`http://localhost:8080/cliente/${cliente.cedula}`;
+export const getCliente = async(cedula) => {
+    const url=`https://banco-backend-8der.onrender.com/cliente/${cedula}`;
     const resp=await fetch(url);
     const data=await resp.json();
-    const practicasLista=data.map((cliente)=>({
-        nombre: cliente.nombre,
-        cedula: cliente.cedula,
-    }))
-return practicasLista;
+    const cliente = {
+        nombre: data.nombre,
+        cedula: data.cedula,
+    }
+    console.log(cliente);
+    return cliente;
 }

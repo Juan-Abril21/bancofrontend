@@ -14,6 +14,7 @@ import "@/Styles/tables.css";
 import Link from "next/link";
 import AlertaW2Buttons from "@/components/AlertaW2Buttons.jsx";
 import { getClientes } from "@/app/peticiones/getClientes";
+import { eliminarCuenta } from "@/app/peticiones/eliminarCuenta";
 
 export function Tables() {
   const [searchCedula, setSearchCedula] = useState("");
@@ -30,6 +31,9 @@ export function Tables() {
   const filteredInvoices = clientes.filter((invoice) =>
     invoice.cedula.includes(searchCedula)
   );
+  const handleEliminarCuenta= async (id) => {
+    await eliminarCuenta(id);
+  }
 
   return (
     <div>
@@ -68,15 +72,16 @@ export function Tables() {
               <TableCell className="text-right">
                 <AlertaW2Buttons
                   Descripcion={`ID de la cuenta: ${invoice.ID}`} 
+                  click={()=>handleEliminarCuenta(invoice.cuentaId)}
                   TextoBoton={"Eliminar"} 
                   Dialogo={`¿Está seguro que quiere eliminar la cuenta?`}
                   path1={"/"} 
                   alertButton1={"Eliminar"}
-                  path2={"/"}
+                  path2={"/cuentas"}  
                   alertButton2={"Volver"}
                 />
                 <Button>
-                  <Link href="/depositar">Depositar</Link>
+                  <Link href={`/depositar?id=${invoice.cuentaId}`}>Depositar</Link>
                 </Button>
               </TableCell>
             </TableRow>

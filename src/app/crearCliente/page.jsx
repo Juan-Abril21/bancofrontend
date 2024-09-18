@@ -15,7 +15,7 @@ export default function CrearCliente() {
   const [nombre, setNombre] = useState("");
   const [cedula, setCedula] = useState("");
 
-  const [clienteRegistrado, setClienteRegistrado] = useState(null);
+  const [clienteRegistrado, setClienteRegistrado] = useState([]);
 
   const handleRegistrar = () => {
     const cliente = {
@@ -23,6 +23,7 @@ export default function CrearCliente() {
       cedula: cedula,
     };
     setClienteRegistrado(cliente);
+    postCliente(cliente);
   };
 
   return (

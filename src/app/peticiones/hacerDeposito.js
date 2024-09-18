@@ -1,8 +1,9 @@
-export const postCuenta = async (cedula) => {
-    const url = `https://banco-backend-8der.onrender.com/cuenta?cedula=${cedula}`;
+export const Deposito = async (data) => {
+    const url = `https://banco-backend-8der.onrender.com/depositar`;
     const resp = await fetch(url, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)  
     });
   
     if (resp.ok) {
@@ -15,4 +16,3 @@ export const postCuenta = async (cedula) => {
       // Aquí puedes manejar el error o mostrar un mensaje de error al usuario
     }
   };
-  

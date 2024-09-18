@@ -14,10 +14,14 @@ import {
   import '../Styles/crearCliente.css'
 
 const Alerta = ({TextoBoton, Dialogo, path, Descripcion, alertButton, click}) => {
-    return (
-        <AlertDialog>
+  const handleClick = async () => {
+    await click();
+  };
+
+  return (
+    <AlertDialog>
       <AlertDialogTrigger asChild>
-        <Button onClick={click}>{TextoBoton}</Button>
+        <Button onClick={handleClick}>{TextoBoton}</Button>
       </AlertDialogTrigger>
       <AlertDialogContent className ="AlertDialogContent">
         <AlertDialogHeader>
@@ -31,6 +35,6 @@ const Alerta = ({TextoBoton, Dialogo, path, Descripcion, alertButton, click}) =>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>
-    )
+  )
 }
 export default Alerta;
