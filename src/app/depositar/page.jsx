@@ -1,6 +1,6 @@
 "use client";
 import { useSearchParams } from 'next/navigation';
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import "@/Styles/App.css"
@@ -26,6 +26,7 @@ export default function Depositar() {
   };
 
   return (
+    <Suspense fallback={<div>Loading...</div>}>
     <main>
       <section className="nav">
         <h1 className="titulo">Depósito</h1>
@@ -47,5 +48,6 @@ export default function Depositar() {
         />
       </div>
     </main>
+    </Suspense>
   );
 }
