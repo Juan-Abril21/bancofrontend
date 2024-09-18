@@ -13,11 +13,15 @@ import {
   import Link from "next/link";
   import '../Styles/crearCliente.css'
 
-const alterta = ({TextoBoton, Dialogo, path, Descripcion, alertButton}) => {
-    return (
-        <AlertDialog>
+const Alerta = ({TextoBoton, Dialogo, path, Descripcion, alertButton, click}) => {
+  const handleClick = async () => {
+    await click();
+  };
+
+  return (
+    <AlertDialog>
       <AlertDialogTrigger asChild>
-        <Button>{TextoBoton}</Button>
+        <Button onClick={handleClick}>{TextoBoton}</Button>
       </AlertDialogTrigger>
       <AlertDialogContent className ="AlertDialogContent">
         <AlertDialogHeader>
@@ -31,6 +35,6 @@ const alterta = ({TextoBoton, Dialogo, path, Descripcion, alertButton}) => {
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>
-    )
+  )
 }
-export default alterta;
+export default Alerta;

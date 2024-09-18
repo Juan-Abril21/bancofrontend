@@ -1,3 +1,14 @@
+.nav {
+    background-color: #23272F;
+  }
+  
+  .titulo {
+      color: #fff;
+      font-size: 2rem;
+      font-weight: 700;
+      text-align: center;
+  }
+
 .inputFormulario {
     border: 1px solid black
 }
@@ -8,9 +19,16 @@
     justify-content: center;
     flex-direction: column;
     height: 100vh;
-    gap: 10px
+    gap: 10px;
+    position: relative; 
 }
 
 .AlertDialogContent {
     background-color: white;
+}
+
+.volver {
+    position: absolute;
+    bottom: 10vh;
+    left: 5vh;
 }
