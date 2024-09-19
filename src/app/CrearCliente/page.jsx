@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Alerta from "@/components/Alerta.jsx";
-import { InputWithLabel } from "@/components/Input.jsx";
+import { InputWithLabel } from "@/components/InputWithLabel";
 import { postCliente } from "../peticiones/crearCliente";
 import { ButtonLoading } from "@/components/ButtonLoading"; // Importar el botón de carga
 
@@ -50,6 +50,7 @@ export default function CrearCliente() {
           type={"number"}
           nombreLabel={"Cedula"}
           value={cedula}
+          inputMode={"numeric"}
           onChange={(e) => setCedula(e.target.value)}
         />
 

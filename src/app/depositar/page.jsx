@@ -4,7 +4,7 @@ import { useState, Suspense } from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import "@/Styles/App.css";
-import { InputWithLabel } from "@/components/Input";
+import { InputWithLabel } from "@/components/InputWithLabel";
 import Alerta from "@/components/Alerta.jsx";
 import { Deposito } from "../peticiones/hacerDeposito";
 import { ButtonLoading } from "@/components/ButtonLoading"; 
