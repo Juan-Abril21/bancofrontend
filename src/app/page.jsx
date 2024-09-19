@@ -1,18 +1,25 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "../components/ui/button";
 import { ButtonLoading } from "@/components/ButtonLoading";
 import "../Styles/App.css";
+import Image from "next/image";
 
 export default function App() {
   const router = useRouter();
   const [loadingButton, setLoadingButton] = useState("");
+  const [darkMode, setDarkMode] = useState(false);
 
   const handleClick = (buttonName, redirectUrl) => {
     setLoadingButton(buttonName);
     router.push(redirectUrl);
+  };
+
+  const toggleTheme = () => {
+    setDarkMode(!darkMode);
+    document.documentElement.classList.toggle("dark");
   };
 
   return (
@@ -20,6 +27,14 @@ export default function App() {
       <section className="nav">
         <h1 className="titulo">Banco Fachero</h1>
       </section>
+      <div className="theme-toggle" onClick={toggleTheme}>
+        <Image
+          src={darkMode ? "/light-mode-icon.png" : "/dark-mode-icon.png"}
+          alt="Toggle Theme"
+          width={40}
+          height={40}
+        />
+      </div>
       <div className="botones">
         {loadingButton === "crearCliente" ? (
           <ButtonLoading />

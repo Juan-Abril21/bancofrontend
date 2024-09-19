@@ -22,7 +22,7 @@ const Alerta = ({ TextoBoton, Dialogo, path, Descripcion, alertButton, click }) 
       <AlertDialogTrigger asChild>
         <Button>{TextoBoton}</Button>
       </AlertDialogTrigger>
-      <AlertDialogContent className="AlertDialogContent">
+      <AlertDialogContent className="AlertDialogContent bg-white dark:bg-gray-800 dark:text-white">
         <AlertDialogHeader>
           <AlertDialogTitle>{Dialogo}</AlertDialogTitle>
           <AlertDialogDescription>

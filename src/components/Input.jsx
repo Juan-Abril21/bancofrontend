@@ -1,11 +1,9 @@
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
+import { Input } from "@/components/ui/input";
 
-export function InputWithLabel({type, nombre, nombreLabel, value, onChange}) {
+export function InputDemo({type, nombre, value, onChange, inputMode}) {
   return (
-    <div className="grid w-full max-w-sm items-center gap-1.5">
-      <Label>{nombreLabel}</Label>
-      <Input type={type} id={type} placeholder={nombre} value={value} onChange={onChange}/>
-    </div>
-  )
+    <Input
+    inputMode = {inputMode} type={type} id={type} placeholder={nombre} value={value} onChange={onChange}
+    />
+  );
 }

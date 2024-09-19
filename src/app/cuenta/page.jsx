@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { InputWithLabel } from "@/components/Input";
+import { InputWithLabel } from "@/components/InputWithLabel";
 import "@/Styles/cuenta.css";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
@@ -15,8 +15,9 @@ export default function Cuenta() {
   const [cedula, setCedula] = useState("");
   const [nombre, setNombre] = useState("");
   const [inputsVisibles, setInputsVisibles] = useState(false);
-  const [isVerifying, setIsVerifying] = useState(false); 
-  const [isCreating, setIsCreating] = useState(false); 
+  const [isVerifying, setIsVerifying] = useState(false);
+  const [isCreating, setIsCreating] = useState(false);
+  const [error, setError] = useState(null); 
   const router = useRouter();
   const [cuentaCreada, setCuentaCreada] = useState(null);
 
@@ -26,31 +27,37 @@ export default function Cuenta() {
       cedula: cedula,
     };
     setCuentaCreada(cuenta);
-    setIsCreating(true); 
+    setIsCreating(true);
 
     try {
       await postCuenta(cedula);
-      setIsCreating(false); 
+      setIsCreating(false);
     } catch (error) {
       console.error("Error al crear cuenta:", error);
-      setIsCreating(false); 
+      setIsCreating(false);
     }
   };
 
   const verificarCedula = async () => {
-    setIsVerifying(true); 
+    setIsVerifying(true);
+    setError(null); 
     try {
       const cliente = await getCliente(cedula);
-      if (cliente) {
+      if (cliente && cliente.nombre) { 
         setNombre(cliente.nombre);
         setInputsVisibles(true);
       } else {
-        router.push("/crearCliente");
+        router.push("/CrearCliente");
       }
     } catch (error) {
       console.error("Error al verificar cédula:", error);
+      if (error.response && error.response.status === 404) {
+        router.push("/CrearCliente");
+      } else {
+        setError("Ha ocurrido un error al verificar la cédula.");
+      }
     } finally {
-      setIsVerifying(false); 
+      setIsVerifying(false);
     }
   };
 
@@ -66,11 +73,12 @@ export default function Cuenta() {
             type={"number"}
             nombreLabel={"Cedula"}
             value={cedula}
+            inputMode={"numeric"}
             onChange={(e) => setCedula(e.target.value)}
           />
 
           {isVerifying ? (
-            <ButtonLoading /> 
+            <ButtonLoading />
           ) : (
             <Button onClick={verificarCedula}>Verificar</Button>
           )}
@@ -84,10 +92,12 @@ export default function Cuenta() {
                 value={nombre}
                 onChange={(e) => setNombre(e.target.value)}
                 click={handleCrear}
-                buttonMessage={isCreating ? <ButtonLoading /> : "Crear"} 
+                buttonMessage={isCreating ? <ButtonLoading /> : "Crear"}
               />
             </>
           )}
+
+          {error && <p className="error">{error}</p>} 
 
           <Button asChild className="volver">
             <Link href="/">Volver</Link>

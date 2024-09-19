@@ -16,6 +16,7 @@ import AlertaW2Buttons from "@/components/AlertaW2Buttons.jsx";
 import { getClientes } from "@/app/peticiones/getClientes";
 import { eliminarCuenta } from "@/app/peticiones/eliminarCuenta";
 import { ButtonLoading } from "@/components/ButtonLoading"; 
+import { InputDemo } from "@/components/Input";
 
 export function Tables() {
   const [searchCedula, setSearchCedula] = useState("");
@@ -48,13 +49,12 @@ export function Tables() {
   return (
     <div>
       <div className="mb-4">
-        <input
-          type="text"
-          id="search"
-          value={searchCedula}
+        <InputDemo
+          nombre={"Ingrese el numero de cedula"}
+          type={"number"}
+          nombreLabel={"Cedula"}
+          inputMode={"numeric"}
           onChange={(e) => setSearchCedula(e.target.value)}
-          className="mt-1 block w-full p-2 border rounded"
-          placeholder="Ingrese el número de cédula"
         />
       </div>
       <Table>
@@ -77,7 +77,8 @@ export function Tables() {
               <TableCell>{invoice.cuentaId}</TableCell>
               <TableCell>{invoice.cedula}</TableCell>
               <TableCell>{invoice.nombre}</TableCell>
-              <TableCell>{invoice.saldo}</TableCell>
+              <TableCell>{"$" + invoice.saldo.toLocaleString("es-ES")}</TableCell>
+
               <TableCell>{invoice.fechaCreacion}</TableCell>
               <TableCell className="text-right">
                 <AlertaW2Buttons
