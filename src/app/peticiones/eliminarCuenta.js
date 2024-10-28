@@ -1,6 +1,6 @@
 
 export const eliminarCuenta = async (id) => {
-    const url = `https://banco-backend-8der.onrender.com/cuenta/eliminar/${id}`;
+    const url = `https://stingray-app-w2qjh.ondigitalocean.app/cuenta/eliminar/${id}`;
     try {
       const resp = await fetch(url, {
         method: 'DELETE',

@@ -1,5 +1,5 @@
 export const getClientes = async() => {
-    const url=`https://banco-backend-8der.onrender.com/clientes`;
+    const url=`https://stingray-app-w2qjh.ondigitalocean.app/clientes`;
     const resp = await fetch(url);
     const data = await resp.json();
     const clientesLista = data.flatMap((cliente) =>

@@ -1,5 +1,5 @@
 export const postCuenta = async (cedula) => {
-    const url = `https://banco-backend-8der.onrender.com/cuenta?cedula=${cedula}`;
+    const url = `https://stingray-app-w2qjh.ondigitalocean.app/cuenta?cedula=${cedula}`;
     const resp = await fetch(url, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },

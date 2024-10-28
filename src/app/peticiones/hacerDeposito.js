@@ -1,5 +1,5 @@
 export const Deposito = async (data) => {
-    const url = `https://banco-backend-8der.onrender.com/depositar`;
+    const url = `https://stingray-app-w2qjh.ondigitalocean.app/depositar`;
     const resp = await fetch(url, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
