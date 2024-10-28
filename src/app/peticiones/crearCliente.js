@@ -1,5 +1,5 @@
 export const postCliente = async (cliente) => {
-  const url = 'https://banco-backend-8der.onrender.com/cliente';
+  const url = 'https://stingray-app-w2qjh.ondigitalocean.app/cliente';
   console.log('Agregando cliente', cliente);
   const resp = await fetch(url, {
     method: 'POST',

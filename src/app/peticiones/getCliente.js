@@ -1,5 +1,5 @@
 export const getCliente = async(cedula) => {
-    const url=`https://banco-backend-8der.onrender.com/cliente/${cedula}`;
+    const url=`https://stingray-app-w2qjh.ondigitalocean.app/cliente/${cedula}`;
     const resp=await fetch(url);
     const data=await resp.json();
     const cliente = {
