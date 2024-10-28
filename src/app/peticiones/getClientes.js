@@ -8,7 +8,7 @@ export const getClientes = async() => {
             cedula: cliente.cedula,
             nombre: cliente.nombre,
             saldo: cuenta.saldo,
-            fechaCreacion: cuenta.fecha_creacion,
+            fechaCreacion: cuenta.fechaCreacion,
             cuentaId: cuenta.id
         }))
     );
